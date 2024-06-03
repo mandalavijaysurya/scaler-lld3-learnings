@@ -1,10 +1,7 @@
 package org.scalerlearnings.service.botplayingstrategy;
 
 import org.scalerlearnings.exception.GameOverException;
-import org.scalerlearnings.models.Board;
-import org.scalerlearnings.models.Cell;
-import org.scalerlearnings.models.CellStatus;
-import org.scalerlearnings.models.Move;
+import org.scalerlearnings.models.*;
 
 import java.util.List;
 
@@ -15,12 +12,19 @@ import java.util.List;
 public class RandomBotPlayingStrategy implements BotPlayingStrategy{
 
     @Override
-    public Move makeMove(Board board) throws GameOverException{
+    public Move makeMove(Board board, Player player) throws GameOverException{
         List<List<Cell>> matrix = board.getCellMatrix();
         for(int i = 0 ; i < matrix.size(); i++){
             for(int j = 0; j < matrix.size(); j++){
                 if(matrix.get(i).get(j).getCellStatus().equals(CellStatus.EMPTY)){
-                    return new Move();
+                    matrix.get(i).get(j).setCellStatus(CellStatus.FILLED);
+                    matrix.get(i).get(j).setPlayer(player);
+                    Move lastPlayedMove = new Move(i, j, player);
+                    Cell latestCell = new Cell(i,j);
+                    latestCell.setCellStatus(CellStatus.FILLED);
+                    lastPlayedMove.setCell(latestCell);
+                    lastPlayedMove.setPlayer(player);
+                    return lastPlayedMove;
                 }
             }
         }

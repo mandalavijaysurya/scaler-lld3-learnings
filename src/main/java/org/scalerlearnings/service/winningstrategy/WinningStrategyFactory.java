@@ -5,8 +5,10 @@ package org.scalerlearnings.service.winningstrategy;
  * @github: github/mandalavijaysurya (<a href="https://www.github.com/mandalavijaysurya"> Github</a>)
  */
 public class WinningStrategyFactory {
-    public WinningStrategy getWinningStrategy(WinningStrategies winningStrategy, int dimension){
-        return new OrderOneWinningStrategy(dimension);
+    public static WinningStrategy getWinningStrategy(WinningStrategies winningStrategy, int dimension){
+        return switch (winningStrategy) {
+            case ORDER_ONE -> new OrderOneWinningStrategy(dimension);
+        };
     }
 
 }

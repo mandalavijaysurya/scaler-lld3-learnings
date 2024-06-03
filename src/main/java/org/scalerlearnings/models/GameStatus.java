@@ -7,5 +7,5 @@ package org.scalerlearnings.models;
 public enum GameStatus {
     IN_PROGRESS,
     DRAW,
-    SUCCESS;
+    COMPLETED;
 }

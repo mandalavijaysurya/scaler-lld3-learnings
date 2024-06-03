@@ -5,7 +5,7 @@ package org.scalerlearnings.service.botplayingstrategy;
  * @github: github/mandalavijaysurya (<a href="https://www.github.com/mandalavijaysurya"> Github</a>)
  */
 public class BotPlayingStrategyFactory {
-    public BotPlayingStrategy getBotPlayingStrategy(){
+    public static BotPlayingStrategy getBotPlayingStrategy(){
         return new RandomBotPlayingStrategy();
     }
 

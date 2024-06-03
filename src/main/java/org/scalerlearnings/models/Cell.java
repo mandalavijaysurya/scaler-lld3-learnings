@@ -10,6 +10,12 @@ public class Cell {
     private CellStatus cellStatus;
     private Player player;
 
+    public Cell(Cell cell){
+        this.row = cell.getRow();
+        this.column = cell.getColumn();
+        this.cellStatus = cell.getCellStatus();
+        this.player = cell.getPlayer();
+    }
     public Cell(int row, int column) {
         this.row = row;
         this.cellStatus = CellStatus.EMPTY;

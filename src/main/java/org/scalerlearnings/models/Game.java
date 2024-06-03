@@ -4,6 +4,8 @@ import org.scalerlearnings.exception.DuplicateSymbolException;
 import org.scalerlearnings.exception.InvalidBoardException;
 import org.scalerlearnings.exception.InvalidBotCountException;
 import org.scalerlearnings.exception.InvalidNumberOfPlayersException;
+import org.scalerlearnings.service.winningstrategy.WinningStrategies;
+import org.scalerlearnings.service.winningstrategy.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,6 +24,15 @@ public class Game {
     private List<Move> moves;
     private List<Board> boards;
     private WinningStrategy winningStrategy;
+    private int numberOfSymbols;
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
 
     private Game(Board board, List<Player> players, WinningStrategy winningStrategy) {
         this.board = board;
@@ -30,13 +41,46 @@ public class Game {
         this.moves = new ArrayList<>();
         this.boards = new ArrayList<>();
         this.winningStrategy = winningStrategy;
+        this.numberOfSymbols = 0;
+    }
+    public Player getWinner(){
+        return winner;
+    }
+    public WinningStrategy getWinningStrategy(){
+        return this.winningStrategy;
+    }
+    public List<Board> getBoards(){
+        return this.boards;
+    }
+    public Board getBoard() {
+        return board;
+    }
+    public GameStatus getGameStatus(){
+        return gameStatus;
+    }
+    public List<Move> getMoves(){
+        return this.moves;
+    }
+    public void setWinner(Player player){
+        this.winner = player;
+    }
+    public void setGameStatus(GameStatus gameStatus){
+        this.gameStatus = gameStatus;
+    }
+
+    public int getNumberOfSymbols() {
+        return numberOfSymbols;
+    }
+
+    public void setNumberOfSymbols(int numberOfSymbols) {
+        this.numberOfSymbols = numberOfSymbols;
     }
 
     public static Builder builder(){
         return new Builder();
     }
 
-    static class Builder{
+    public static class Builder{
         private int dimension;
         private List<Player> players;
         private WinningStrategy winningStrategy;

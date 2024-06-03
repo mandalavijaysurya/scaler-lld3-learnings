@@ -11,6 +11,17 @@ public class Board {
     private int size;
     private List<List<Cell>> cellMatrix;
 
+    public Board(Board board){
+        this.size = board.size;
+        this.cellMatrix = new ArrayList<>();
+        for(int i = 0; i < size; i++){
+            cellMatrix.add(new ArrayList<>());
+            for(int j = 0; j< size; j++){
+                cellMatrix.get(i).add(new Cell(board.getCellMatrix().get(i).get(j)));
+            }
+        }
+    }
+
     public Board(int size) {
         this.size = size;
         this.cellMatrix = new ArrayList<>();

@@ -35,7 +35,7 @@ public class OrderOneWinningStrategy implements WinningStrategy{
         return row == col;
     }
     public boolean isTopRightDiagonalCell(int row, int col){
-        return (row + col) == dimension;
+        return (row + col) == dimension - 1;
     }
     public boolean isCornerCell(int row, int col){
         if(row == 0 || row == dimension - 1){
@@ -91,7 +91,7 @@ public class OrderOneWinningStrategy implements WinningStrategy{
     private boolean checkCornerWin( char symbol){
         cornerHashMap.putIfAbsent(symbol, 0);
         cornerHashMap.put(symbol, cornerHashMap.get(symbol) + 1);
-        return topRightHashMap.get(symbol) == 4;
+        return cornerHashMap.get(symbol) == 4;
     }
 
 }
