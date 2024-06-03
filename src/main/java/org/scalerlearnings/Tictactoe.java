@@ -75,6 +75,8 @@ public class Tictactoe {
                 break;
             }
         }
+        if(game.getGameStatus().equals(GameStatus.DRAW))
+            System.out.println("It's a draw");
         System.out.println("Final board status: ");
         controller.displayBoard(game);
         System.out.println("Do you want a replay");
